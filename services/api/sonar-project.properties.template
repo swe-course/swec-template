@@ -1,0 +1,12 @@
+#sonar.host.url=${SONARQUBE_HOST}
+#sonar.login=${SONARQUBE_ACCESS_TOKEN}
+
+sonar.projectKey=${COMPONENT_ID}
+sonar.projectName=${COMPONENT_ID}
+sonar.projectVersion=${COMPONENT_VERSION}
+sonar.sourceEncoding=UTF-8
+sonar.language=java
+sonar.sources=src
+sonar.exclusions=
+sonar.tests=
+sonar.test.inclusions=
