@@ -1,6 +1,6 @@
 {
-  "name": "org.talan.angular",
-  "version": "19.5.0",
+  "name": "io.swec.static.html",
+  "version": "19.8.0-SNAPSHOT",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

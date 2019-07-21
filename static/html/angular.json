@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "org.talan.angular": {
+    "io.swec.static.html": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -54,18 +54,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "org.talan.angular:build"
+            "browserTarget": "io.swec.static.html:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "org.talan.angular:build:production"
+              "browserTarget": "io.swec.static.html:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "org.talan.angular:build"
+            "browserTarget": "io.swec.static.html:build"
           }
         },
         "test": {
@@ -105,7 +105,7 @@
         }
       }
     },
-    "org.talan.angular-e2e": {
+    "io.swec.static.html-e2e": {
       "root": "",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -114,7 +114,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "org.talan.angular:serve"
+            "devServerTarget": "io.swec.static.html:serve"
           }
         },
         "lint": {
@@ -131,7 +131,7 @@
       }
     }
   },
-  "defaultProject": "org.talan.angular",
+  "defaultProject": "io.swec.static.html",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
