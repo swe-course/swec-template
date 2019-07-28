@@ -119,7 +119,7 @@ To develop standalone project, just clone repository or create fork using your a
     </configuration>
   </plugin>
   ```
-### Add assemply plugin
+### Add coverage calculation
   ```
   <plugin>
     <groupId>org.jacoco</groupId>
