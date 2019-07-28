@@ -96,8 +96,11 @@ node {
   }
   //
   stage('Build') {
-  /*
-  */
+    //
+    dir('services/api') {
+      sh "mvn clean install"
+    }
+    //
   }
   //
   stage('Unit tests') {
@@ -106,7 +109,7 @@ node {
   }
   //
   stage('SonarQube analysis') {
-    /*/
+    //
     printTopic('Sonarqube properties')
     echo sh(returnStdout: true, script: 'cat sonar-project.properties')
     def scannerHome = tool "${SONARQUBE_SCANNER}"
@@ -142,7 +145,7 @@ node {
         }
       }
     }
-    /*/
+    //
   }
   //
   stage('Deploy & Publish') {
