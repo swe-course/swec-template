@@ -1,5 +1,5 @@
 {
   "openjdk":"openjdk-11.0.2",
-  "nodejs":"nodejs-10.7.0",
+  "nodejs":"nodejs-10.16.0",
   "maven":"maven-3.6.0"
 }
