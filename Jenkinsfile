@@ -16,17 +16,17 @@ def configBuildEnvironment(configFile) {
   // configure
   config.each { prop, val -> 
     if (tools[prop]) {
-      sh "echo Configurint ${prop} using ${val} version"
-      def t = tool "${val}"
-      print(t)
-      if (t) {
+      try {
+        def t = tool "${val}"
+        sh "echo Configuring ${prop} using ${val} version"
+
         tools[prop].envs.each { e ->
           env[e] = "${t}"
         }
         tools[prop].paths.each { p ->
           env.PATH = "${t}${p}:${env.PATH}"
         }
-      } else {
+      } catch (e) {
         sh "echo Tool ${prop} [${val}] is not available at this instance"
       }
       // validate setup
