@@ -18,11 +18,15 @@ def configBuildEnv(configFile) {
     if (tools[prop]) {
       sh "echo Configurint ${prop} using ${val} version"
       def t = tool "${val}"
-      tools[prop].envs.each { e ->
-        env[e] = "${t}"
-      }
-      tools[prop].paths.each { p ->
-        env.PATH = "${t}${p}:${env.PATH}"
+      if (t) {
+        tools[prop].envs.each { e ->
+          env[e] = "${t}"
+        }
+        tools[prop].paths.each { p ->
+          env.PATH = "${t}${p}:${env.PATH}"
+        }
+      } else {
+        sh "echo Tool ${prop} [${val}] is not available at this instance"
       }
       // validate setup
       sh "${tools[prop].validate}"
@@ -62,7 +66,7 @@ node {
     printTopic('SCM variables')
     println(scmVars)
     // configure build env
-    // configBuildEnv('build.conf.json');
+    configBuildEnvironment('build.conf.json');
     //
     commitSha = scmVars.GIT_COMMIT
     buildBranch = scmVars.GIT_BRANCH
