@@ -1,4 +1,4 @@
-def configBuildEnv(configFile) {
+def configBuildEnvironment(configFile) {
   def tools = [
     'openjdk': ['envs':['JAVA_HOME'], 'paths':['/bin'], 'validate':'java -version'],
     'nodejs': ['envs':['NODEJS_HOME'], 'paths':['/bin'], 'validate':'node -v'],
