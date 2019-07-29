@@ -1,4 +1,4 @@
-def configBuildEnv(configFile) {
+def configBuildEnvironment(configFile) {
   def tools = [
     'openjdk': ['envs':['JAVA_HOME'], 'paths':['/bin'], 'validate':'java -version'],
     'nodejs': ['envs':['NODEJS_HOME'], 'paths':['/bin'], 'validate':'node -v'],
@@ -16,13 +16,18 @@ def configBuildEnv(configFile) {
   // configure
   config.each { prop, val -> 
     if (tools[prop]) {
-      sh "echo Configurint ${prop} using ${val} version"
-      def t = tool "${val}"
-      tools[prop].envs.each { e ->
-        env[e] = "${t}"
-      }
-      tools[prop].paths.each { p ->
-        env.PATH = "${t}${p}:${env.PATH}"
+      try {
+        def t = tool "${val}"
+        sh "echo Configuring ${prop} using ${val} version"
+
+        tools[prop].envs.each { e ->
+          env[e] = "${t}"
+        }
+        tools[prop].paths.each { p ->
+          env.PATH = "${t}${p}:${env.PATH}"
+        }
+      } catch (e) {
+        sh "echo Tool ${prop} [${val}] is not available at this instance"
       }
       // validate setup
       sh "${tools[prop].validate}"
@@ -62,7 +67,7 @@ node {
     printTopic('SCM variables')
     println(scmVars)
     // configure build env
-    // configBuildEnv('build.conf.json');
+    configBuildEnvironment('build.conf.json');
     //
     commitSha = scmVars.GIT_COMMIT
     buildBranch = scmVars.GIT_BRANCH
@@ -96,8 +101,11 @@ node {
   }
   //
   stage('Build') {
-  /*
-  */
+    //
+    dir('services/api') {
+      sh "mvn clean install"
+    }
+    //
   }
   //
   stage('Unit tests') {
@@ -106,7 +114,7 @@ node {
   }
   //
   stage('SonarQube analysis') {
-    /*/
+    //
     printTopic('Sonarqube properties')
     echo sh(returnStdout: true, script: 'cat sonar-project.properties')
     def scannerHome = tool "${SONARQUBE_SCANNER}"
@@ -142,7 +150,7 @@ node {
         }
       }
     }
-    /*/
+    //
   }
   //
   stage('Deploy & Publish') {
