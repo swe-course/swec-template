@@ -18,6 +18,7 @@ def configBuildEnvironment(configFile) {
     if (tools[prop]) {
       sh "echo Configurint ${prop} using ${val} version"
       def t = tool "${val}"
+      print(t)
       if (t) {
         tools[prop].envs.each { e ->
           env[e] = "${t}"
