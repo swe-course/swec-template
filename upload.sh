@@ -10,7 +10,6 @@ PATH_TO=./services/api/target
 echo "Upload artifact ${ARTIFACT} into Nexus snapshot repository"
 printenv
 
-: '
 mvn --settings ./settings.xml deploy:deploy-file \
   -DrepositoryId=${NEXUS_REPO} \
   -Durl="${NEXUS_HOST}/repository/${NEXUS_REPO}" \
@@ -21,4 +20,3 @@ mvn --settings ./settings.xml deploy:deploy-file \
   -Dpackaging="${BUNDLE_PACKAGING}" \
   -DgeneratePom=true \
   -DuniqueVersion=false
-'
