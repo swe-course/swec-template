@@ -109,8 +109,8 @@ node {
   }
   //
   stage('Unit tests') {
-  /*
-  */
+    /*/
+    /*/
   }
   //
   stage('SonarQube analysis') {
@@ -153,13 +153,13 @@ node {
     //
   }
   //
-  stage('Deploy & Publish') {
-    /*
+  stage('Delivery') {
+    //
     if (pullRequest){
     } else {
-      // upload, create docker, publish
+      sh "./upload.sh"
     }
-    //archiveArtifacts artifacts: 'path/2/artifact'
-    */
+    // archiveArtifacts artifacts: 'path/2/artifact'
+    //
   }
 }
