@@ -58,6 +58,7 @@ node {
   def lastCommitAuthorEmail = ''
   def repo = ''
   def org = ''
+  def uploadArtifacts = env.NEXUS_HOST && env.NEXUS_REPO && env.NEXUS_USER && env.NEXUS_PASS
   //
   stage('Clone sources') {
     //
@@ -155,11 +156,13 @@ node {
   //
   stage('Delivery') {
     //
-    if (pullRequest){
-    } else {
-      sh "./upload.sh"
+    if (uploadArtifacts) {
+      if (pullRequest){
+      } else {
+        sh "./upload.sh"
+      }
+      // archiveArtifacts artifacts: 'path/2/artifact'
     }
-    // archiveArtifacts artifacts: 'path/2/artifact'
     //
   }
 }
