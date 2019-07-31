@@ -21,8 +21,8 @@ public class Main {
     public static final String BASE_URI = "http://0.0.0.0:9081/myapp/";
 
     // Sonar issue
-    String uname = "steve";
-    String password = "blue";
+    // String uname = "steve";
+    // String password = "blue";
 
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
