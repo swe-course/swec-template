@@ -18,7 +18,7 @@ public class Main {
     private static final Logger logger = Logger.getLogger(Main.class);
 
     // Base URI the Grizzly HTTP server will listen on
-    public static final String BASE_URI = "http://0.0.0.0:9081/myapp/";
+    public static final String BASE_URI = "http://0.0.0.0:9082/api";
 
     // Sonar issue
     // String uname = "steve";
