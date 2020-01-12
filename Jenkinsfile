@@ -1,3 +1,21 @@
+
+properties([
+  parameters([
+    string(name: 'COMPONENT_PARAM_HOST', defaultValue: '127.0.0.1'),
+    string(name: 'COMPONENT_PARAM_LSTN', defaultValue: '0.0.0.0'),
+    string(name: 'COMPONENT_PARAM_PORT', defaultValue: '9082'),
+    string(name: 'COMPONENT_PARAM_PORTS', defaultValue: '9444'),
+    string(name: 'SONARQUBE_SERVER', defaultValue: 'SonarQube'),
+    string(name: 'SONARQUBE_SCANNER', defaultValue: 'SonarQubeScanner'),
+    string(name: 'SONARQUBE_ACCESS_TOKEN', defaultValue: "${SWEC_SONARQUBE_ACCESS_TOKEN}"),
+    string(name: 'GITHUB_ACCESS_TOKEN', defaultValue: "${SWEC_GITHUB_ACCESS_TOKEN}"),
+    string(name: 'NEXUS_HOST', defaultValue: "${SWEC_NEXUS_HOST}"),
+    string(name: 'NEXUS_REPO', defaultValue: "${SWEC_NEXUS_REPO}"),
+    string(name: 'NEXUS_USER', defaultValue: "${SWEC_NEXUS_USER}"),
+    string(name: 'NEXUS_PASS', defaultValue: "${SWEC_NEXUS_PASS}")
+  ])
+])
+
 def configBuildEnvironment(configFile) {
   def tools = [
     'openjdk': ['envs':['JAVA_HOME'], 'paths':['/bin'], 'validate':'java -version'],
