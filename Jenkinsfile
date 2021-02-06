@@ -86,7 +86,8 @@ node {
     printTopic('SCM variables')
     println(scmVars)
     // configure build env
-    configBuildEnvironment('build.conf.json');
+    //configBuildEnvironment('build.conf.json');
+    sh "echo '{\"detach\": true}' > '.tlnrc'"
     //
     commitSha = scmVars.GIT_COMMIT
     buildBranch = scmVars.GIT_BRANCH
@@ -121,9 +122,8 @@ node {
   //
   stage('Build') {
     //
-    dir('services/api') {
-      sh "mvn clean install"
-    }
+    sh 'tln install --depends'
+    sh 'tln exec service/api -c "mvn clean install"'
     //
   }
   //
