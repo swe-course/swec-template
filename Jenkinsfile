@@ -123,7 +123,7 @@ node {
   stage('Build') {
     //
     sh 'tln install --depends'
-    sh 'tln exec service/api -c "mvn clean install"'
+    sh 'tln exec services/api -c "mvn clean install"'
     //
   }
   //
