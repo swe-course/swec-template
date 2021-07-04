@@ -62,7 +62,8 @@ public class Main {
           logger.info("Exiting service ...");
         } catch (InterruptedException e) {
           logger.error("There was an error while starting Grizzly HTTP server.", e);
-          Thread.currentThread().interrupt();
+          Thread.currentThread().interrupt(); 
+            
         }
     }
 }
